@@ -1,0 +1,19 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc src/index.ts",
+    "posttest": "rm src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "spec": "../"
+  },
+  "devDependencies": {
+    "typescript": "^2.9.2"
+  }
+}
