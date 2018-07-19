@@ -6,3 +6,10 @@ yarn-error.log
 .idea/
 dist/
 src/
+examples/
+clean
+dev
+gen
+gen-index
+tsconfig.json
+tslint.json
