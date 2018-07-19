@@ -34,10 +34,25 @@ find idl -type f -not -name '*.idl' -exec echo "mv '{}' '{}'" \; \
 find idl -type d -empty -delete
 
 # hot fix for bug in idl2ts
-mv src/client/client.ts src/demo/client.ts
-mv src/server/server.ts src/demo/server.ts
-mv src/smartcontract/smartcontract.ts src/demo/smartcontract.ts
-find src -empty -delete
+cd src
+set -x
+app=$(find -empty -type f -exec dirname {} \; | uniq | sed 's,\./,,')
+function fix {
+  set -x
+  app="$1"
+  dest="$2"
+  filename=$(basename "$dest" | sed 's/\.ts$//')
+  src=$(echo "$dest" | sed "s/$app/$filename/")
+  mv "$src" "$dest"
+}
+export -f fix
+find -empty | xargs -I "{}" bash -c "fix "${app}" '{}'"
+find -empty -delete
+cd ..
+
+# format ts code
+npm run format || true
+echo "remember to insert the import lines"
 
 rm -rf dist
 echo "all done."

@@ -16,7 +16,7 @@
   "author": "Beeno Tung",
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "idl2ts": "^0.3.1",
+    "idl2ts": "^0.3.3",
     "prettier": "^1.13.7",
     "tslint": "^5.9.1",
     "tslint-eslint-rules": "^5.3.1",
