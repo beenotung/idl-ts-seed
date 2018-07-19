@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+set -o pipefail
+cd idl
+find -name '*.idl' | xargs -I {} idlj "{}"
+find -name '*.java' -delete
+find -empty -delete
