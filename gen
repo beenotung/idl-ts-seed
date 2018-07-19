@@ -35,7 +35,6 @@ find idl -type d -empty -delete
 
 # hot fix for bug in idl2ts
 cd src
-set -x
 app=$(find -empty -type f -exec dirname {} \; | uniq | sed 's,\./,,')
 function fix {
   set -x
