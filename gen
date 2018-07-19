@@ -37,7 +37,6 @@ find idl -type d -empty -delete
 cd src
 app=$(find -empty -type f -exec dirname {} \; | uniq | sed 's,\./,,')
 function fix {
-  set -x
   app="$1"
   dest="$2"
   filename=$(basename "$dest" | sed 's/\.ts$//')
