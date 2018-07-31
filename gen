@@ -49,6 +49,7 @@ find -empty -delete
 cd ..
 
 # format ts code
+find src -name '*.ts' | xargs -I "{}" sed -i 's,\([a-zA-Z;}]\)// ,\1\n// ,' "{}"
 npm run format || true
 echo "remember to insert the import lines"
 
