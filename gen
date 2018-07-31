@@ -10,9 +10,9 @@ fi
 # code generation
 cd idl
 if [ "$LANG" == "java" ]; then
-  find -name '*.idl' | xargs -I {} idlj "{}"
+  find -name '*.idl' | xargs -I "{}" idlj "{}"
 else
-  find -name '*.idl' | xargs -I {} ../node_modules/.bin/idl2ts "{}"
+  find -name '*.idl' | xargs -I "{}" ../node_modules/.bin/idl2ts "{}"
 fi
 cd ../
 
@@ -35,7 +35,7 @@ find idl -type d -empty -delete
 
 # hot fix for bug in idl2ts
 cd src
-app=$(find -empty -type f -exec dirname {} \; | uniq | sed 's,\./,,')
+app=$(find -empty -type f -exec dirname "{}" \; | uniq | sed 's,\./,,')
 function fix {
   app="$1"
   dest="$2"
@@ -49,6 +49,7 @@ find -empty -delete
 cd ..
 
 # format ts code
+find src -name '*.ts' | xargs -I "{}" sed -i 's,\([a-zA-Z;}]\)// ,\1\n// ,' "{}"
 npm run format || true
 echo "remember to insert the import lines"
 
