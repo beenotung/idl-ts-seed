@@ -4,4 +4,5 @@ yarn.lock
 *.java
 yarn-error.log
 .idea/
+src/
 dist/
