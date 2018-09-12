@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+set -o pipefail
+
+files=${@}
+
+./gen || true
+
+i=0
+for f in ${files}; do
+  i=$((i+1))
+  mv "$f" ../${i}
+done
+
+git add src dist
+git reset --hard HEAD
+
+i=0
+for f in ${files}; do
+  i=$((i+1))
+  mv ../${i} "$f"
+done
+
+echo "all done."
