@@ -4,7 +4,7 @@ set -o pipefail
 
 # install dependencies
 if [ ! -f node_modules/.bin/idl2ts ]; then
-  yarn --offline || yarn || npm i
+  npm i
 fi
 
 # code generation
