@@ -1,3 +1,3 @@
-import {UserSeq} from "spec";
+import { UserSeq } from "spec";
 
 let user: UserSeq;
